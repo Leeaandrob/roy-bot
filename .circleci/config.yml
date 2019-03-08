@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.11
+    branches:
+      ignore:
+        - /feature-.*/
+        - /feature.*/
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo apt-get update -y && sudo apt-get install -y ssh rsync
+      - deploy:
+          name: Deploy Master to Roy API
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            go build .
+            rsync -avzh -e "ssh -o StrictHostKeyChecking=no" roy-bot devops@35.233.228.16:/home/devops/apps/roy-bot/src/
+            ssh -o StrictHostKeyChecking=no devops@35.233.228.16 << EOF
+            echo 'Qwert@741258' | sudo -S service roy_bot restart
+            EOF
+            fi
