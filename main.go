@@ -113,9 +113,21 @@ func main() {
 	}
 
 	b.Handle(tb.OnText, func(m *tb.Message) {
-		b.Send(m.Chat, "Oi! Eis a lista de coisas que posso te responder:\n\n @Transcoder: healthcheck, status do servidor.", &tb.ReplyMarkup{
-			ReplyKeyboard: replyKeys,
-		})
+		switch m.Text {
+		case "@royinc_bot":
+			b.Send(m.Chat, "Oi! Eis a lista de coisas que posso te responder:\n\n @Transcoder: healthcheck, status do servidor.", &tb.ReplyMarkup{
+				ReplyKeyboard: replyKeys,
+			})
+		case "@royinc_bot hi":
+			b.Send(m.Chat, "Oi! Eis a lista de coisas que posso te responder:\n\n @Transcoder: healthcheck, status do servidor.", &tb.ReplyMarkup{
+				ReplyKeyboard: replyKeys,
+			})
+		case "@royinc_bot oi":
+			b.Send(m.Chat, "Oi! Eis a lista de coisas que posso te responder:\n\n @Transcoder: healthcheck, status do servidor.", &tb.ReplyMarkup{
+				ReplyKeyboard: replyKeys,
+			})
+		}
+
 	})
 
 	b.Start()
