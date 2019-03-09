@@ -21,7 +21,7 @@ type RoyTranscoderStatus struct {
 }
 
 func healthCheckRoyTranscoder() (status bool) {
-	resp, err := http.Get("https://transcoder.roy.video/ping")
+	resp, err := http.Get("http://transcoder.roy.solutions/ping")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -37,7 +37,7 @@ func healthCheckRoyTranscoder() (status bool) {
 }
 
 func statusRoyTranscoder() (status RoyTranscoderStatus) {
-	resp, err := http.Get("https://transcoder.roy.video/transcode/proccess")
+	resp, err := http.Get("http://transcoder.roy.solutions/transcode/proccess")
 	if err != nil {
 		log.Fatalln(err)
 	}
