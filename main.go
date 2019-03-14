@@ -113,7 +113,7 @@ func statusRoyTranscoder() (status RoyTranscoderStatus) {
 func createJobRoyTranscoder(payload ...string) bool {
 	jsonStr := map[string]interface{}{
 		"tenant":      fmt.Sprintf("%s", payload[0]),
-		"id":          fmt.Sprintf("%x", payload[1]),
+		"id":          payload[1],
 		"file":        fmt.Sprintf("%s/contents/videos/%s/%s.mp4", payload[0], payload[1], payload[2]),
 		"filename":    fmt.Sprintf("%s.mp4", payload[2]),
 		"type":        payload[3],
