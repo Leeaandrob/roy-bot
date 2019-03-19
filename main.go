@@ -98,11 +98,14 @@ func statusRoyTranscoder() (status RoyTranscoderStatus) {
 	}
 
 	json.Unmarshal(body, &status)
-	tenants := getRoyTenants(status.Video.Environment)
 
-	for _, t := range tenants {
-		if t.Schema == status.Video.Tenant {
-			status.Video.Owner = t.Hostname
+	if status.Video.Environment != "" {
+		tenants := getRoyTenants(status.Video.Environment)
+
+		for _, t := range tenants {
+			if t.Schema == status.Video.Tenant {
+				status.Video.Owner = t.Hostname
+			}
 		}
 	}
 
