@@ -232,7 +232,7 @@ func main() {
 		go func() {
 			status := statusRoyTranscoder()
 			if status.Video.ID != "" {
-				b.Send(m.Chat, fmt.Sprintf("%s O tamanho da fila é %d.\nO video que está sendo processado no momento é %s para: %s😄", m.Chat.Username, status.QueueSize, status.Video.Filename, status.Video.Owner))
+				b.Send(m.Chat, fmt.Sprintf("%s O tamanho da fila é %d.\nO video que está sendo processado no momento é %s para: %s do tipo: %s 😄", m.Chat.Username, status.QueueSize, status.Video.Filename, status.Video.Owner, status.Video.Type))
 			} else {
 				b.Send(m.Chat, fmt.Sprintf("%s não tem nenhum vídeo no momento sendo processado. 😄", m.Chat.Username))
 			}
